@@ -1,6 +1,6 @@
 {
   "name": "runkeeper-withings-sync",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Small app to feed all the historical data from Runkeeper into Withings",
   "main": "index.js",
   "scripts": {
