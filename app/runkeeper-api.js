@@ -1,4 +1,5 @@
 'use strict';
+var config = require('./' + (process.env.NODE_ENV || 'development') + '.json');
 var request = require('request');
 var express = require('express');
 var _ = require('lodash');
@@ -40,7 +41,7 @@ app.get('/authorizationCode', function(req, res) {
   var auth_url = buildUrlParameters({
     client_id: options.client_id,
     response_type: 'code',
-    redirect_uri: 'https://runkeeper-import.herokuapp.com/newToken'
+    redirect_uri: config.auth_redirect_uri
   }, options.auth_url);
   request(auth_url, function (error, response, body) {
     console.log('response.statusCode', response.statusCode);

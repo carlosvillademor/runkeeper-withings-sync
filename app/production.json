@@ -1,0 +1,3 @@
+{
+  "auth_redirect_uri": "https://runkeeper-import.herokuapp.com/newToken"
+}
