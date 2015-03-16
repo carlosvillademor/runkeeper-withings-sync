@@ -40,7 +40,7 @@ app.get('/authorizationCode', function(req, res) {
   var auth_url = buildUrlParameters({
     client_id: options.client_id,
     response_type: 'code',
-    redirect_uri: 'http://localhost:8080/newToken'
+    redirect_uri: 'https://runkeeper-import.herokuapp.com/newToken'
   }, options.auth_url);
   request(auth_url, function (error, response, body) {
     console.log('response.statusCode', response.statusCode);
