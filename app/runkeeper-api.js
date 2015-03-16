@@ -43,19 +43,15 @@ app.get('/authorizationCode', function(req, res) {
     response_type: 'code',
     redirect_uri: config.auth_redirect_uri
   }, options.auth_url);
-  request(auth_url, function (error, response, body) {
-    console.log('response.statusCode', response.statusCode);
-    if (!error && response.statusCode == 200) {
-      res.send(body);
-    }
-  });
+
+  res.redirect(auth_url);
 
   function buildUrlParameters(parameters, host) {
-    var url = '';
-    _.each(parameters, function (key, value) {
-        if (value) url += key + '=' + encodeURIComponent(value) + '&';
+    var urlParameters = [];
+    _.each(parameters, function (value, key) {
+        if (value) urlParameters.push(key + '=' + encodeURIComponent(value));
     });
-    return (host || "") + url.slice(0, -1);
+    return (host || "") + '?' + urlParameters.join('&');
   }
 
 });
