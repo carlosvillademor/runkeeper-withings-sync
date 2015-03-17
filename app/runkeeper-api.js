@@ -59,8 +59,8 @@ app.get('/profile', function(req, res) {
 });
 
 app.get('/weight', function(req, res) {
-  client.apiCall('GET', 'application/vnd.com.runkeeper.NewWeightSetFeed+json', '/weight', function(err, weightFeed){
-    console.log('weightFeed', weightFeed);
+  client.apiCall('GET', 'application/vnd.com.runkeeper.WeightSetFeed+json', '/weight', function(err, weightFeed){
+    res.send(weightFeed);
   });
 });
 
