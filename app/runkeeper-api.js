@@ -23,7 +23,6 @@ var server = app.listen(process.env.PORT || 5000, function() {
   console.log('Example app listening at http://%s:%s', host, port)
 });
 
-
 app.get('/authorizationCode', function(req, res) {
   var auth_url = buildUrlParameters({
     client_id: options.client_id,
@@ -47,7 +46,7 @@ app.get('/newToken', function(req, res) {
   client.getNewToken(req.query.code, function(err, access_token) {
       if(err) { console.log('Error while retrieving new token' + err); return false; }
       client.access_token = access_token;
-      res.send(200);
+      res.send('OK');
   });
 
 });
@@ -57,7 +56,13 @@ app.get('/profile', function(req, res) {
       if(err) { console.log('Error while accesing to profile info' + err); }
       res.send(reply);
   });
-})
+});
+
+app.get('/weight', function(req, res) {
+  client.apiCall('GET', 'application/vnd.com.runkeeper.NewWeightSetFeed+json', '/weight', function(err, weightFeed){
+    console.log('weightFeed', weightFeed);
+  });
+});
 
 exports.weightFeed = function weightFeed () {
   console.log('authorization_code', authorization_code);
