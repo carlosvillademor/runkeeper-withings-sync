@@ -35,7 +35,8 @@ module.exports = function (grunt) {
         files: ['**/*.js', '!node_modules/**/*.js'],
         tasks: ['default'],
         options: {
-          nospawn: true
+          nospawn: true,
+          reload: true
         }
       }
     }
