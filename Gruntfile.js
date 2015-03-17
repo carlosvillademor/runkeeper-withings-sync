@@ -36,7 +36,7 @@ module.exports = function (grunt) {
         tasks: ['default'],
         options: {
           nospawn: true,
-          reload: true
+          livereload: true
         }
       }
     }
